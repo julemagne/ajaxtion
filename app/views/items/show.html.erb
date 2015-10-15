@@ -4,37 +4,14 @@
   <div class="alert-box success radius"><%= notice %></div>
 <% end %>
 
-<h1>
-  <%= @item.name %>
-</h1>
-<div class="small-4 columns">
-  <%= image_tag @item.image_url, class: "featured" %>
-</div>
-<div class="small-4 columns">
-  <p>
-    <%= @item.description %>
-  </p>
+  <tbody id="items">
+    <%= render @item %>
+  </tbody>
 
-  <p>
-    Starting price:
-    <%= number_to_currency(@item.starting_price) %>
-  </p>
+  <tbody id="bids">
+    <%= render @bid %>
+  </tbody>
 
-  <h3>Highest bid</h3>
-  <div class="row collapse">
-    <div class="small-2 columns"><span class="prefix">$</span></div>
-    <div class="small-10 columns"><%= text_field_tag :nothing, @item.highest_bid_amount, disabled: true %></div>
-  </div>
-
-  <%= form_for @bid do |f| %>
-    <h3>Your Bid</h3>
-    <%= f.hidden_field :item_id %>
-    <div class="row collapse">
-      <div class="small-2 columns"><span class="prefix">$</span></div>
-      <div class="small-10 columns"><%= f.text_field :amount %></div>
-    </div>
-    <%= f.submit "Submit Bid!", class: "button success small" %>
-  <% end %>
 </div>
 <div class="small-4 columns">
 </div>
