@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+  def refresh
+    @item=Item.find(params[:id])
+    @bid=Bid.new(item: @item, amount: @item.next_bid_amount)
+    render "bids/create"
+  end
   # GET /items
   def index
     @items = Item.all

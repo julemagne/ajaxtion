@@ -1,16 +1,10 @@
 class BidsController < ApplicationController
 
   def create
-    @bid = Bid.new(bid_params)
-
-    if @bid.save
-      
-    else
-      @item = @bid.item
-      render "items/show"
-    end
+    Bid.create!(bid_params)
+    @item=Item.find(params[:bid][:item_id])
+    @bid=Bid.new(item: @item, amount: @item.next_bid_amount)
   end
-
 
   private
     # Only allow a trusted parameter "white list" through.
