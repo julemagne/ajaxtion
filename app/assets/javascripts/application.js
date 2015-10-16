@@ -16,8 +16,8 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){   
-  if ($("#bids").length>0){
+$(function(){
+  if ($("#items").length>0){
     window.setInterval('ajaxCall()', 15000);
     //put setInterval call here to keep it on the div in the page where you want it to refresh
   }
@@ -25,7 +25,8 @@ $(function(){
 }); //foundation is the styling
 
 function ajaxCall() {
+  var id = $("#bid_item_id").val();
   response = $.ajax({
-    url: "/items/refresh/",
+    url: "/refresh?id="+id,
   });
 }
