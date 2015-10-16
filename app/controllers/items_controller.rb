@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def refresh
     @item=Item.find(params[:id])
     @bid=Bid.new(item: @item, amount: @item.next_bid_amount)
-    render "bids/create"
+    render "items/create"
   end
   # GET /items
   def index

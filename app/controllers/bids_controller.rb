@@ -4,6 +4,7 @@ class BidsController < ApplicationController
     Bid.create!(bid_params)
     @item=Item.find(params[:bid][:item_id])
     @bid=Bid.new(item: @item, amount: @item.next_bid_amount)
+    render 'items/create'
   end
 
   private
